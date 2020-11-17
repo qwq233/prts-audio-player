@@ -1,8 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
 
-ReactDOM.render(
-    <App />,
-  document.getElementById('root')
-);
+import AudioPlayer from "./Component/AudioPlayer";
+document.addEventListener("DOMContentLoaded", function () {
+  const eles = document.getElementsByClassName("audio-player");
+  for (let i = 0; i < eles.length; i++) {
+    ReactDOM.render(
+      <AudioPlayer
+        name={eles[i].getAttribute("data-name") || ""}
+        lowSource={eles[i].getAttribute("data-low") || ""}
+        highSource={eles[i].getAttribute("data-high") || ""}
+        title={eles[i].innerHTML}
+        p={parseInt(eles[i].getAttribute("data-p") || '0')}
+      />,
+      eles[i]
+    );
+  }
+});
