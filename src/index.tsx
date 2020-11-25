@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         lowSource={eles[i].getAttribute("data-low") || ""}
         highSource={eles[i].getAttribute("data-high") || ""}
         title={eles[i].innerHTML}
-        p={parseInt(eles[i].getAttribute("data-p") || '0')}
+        p={parseFloat(eles[i].getAttribute("data-p") || '0')}
       />,
       eles[i]
     );
