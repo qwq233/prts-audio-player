@@ -29,10 +29,12 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 const useStyles = makeStyles({
   root: {
     maxWidth: 800,
+    padding: 8,
   },
   header: {
     display: "flex",
     flexWrap: "wrap",
+    padding: 0,
   },
   slider: {
     flex: "1",
@@ -40,7 +42,7 @@ const useStyles = makeStyles({
   },
   control: {
     display: "flex",
-    margin: 8,
+    // margin: 8,
     // flexWrap: "wrap",
   },
   quality: {
@@ -49,7 +51,7 @@ const useStyles = makeStyles({
   },
   sliderGroup: {
     display: "flex",
-    margin: 8,
+    // margin: 8,
   },
 });
 interface props {
