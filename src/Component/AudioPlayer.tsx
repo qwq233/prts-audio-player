@@ -104,11 +104,7 @@ function App(props: props) {
     return s !== PlayState.Idle && s !== PlayState.Loading;
   }
   function download(q: Quality) {
-    if (q === Quality.Low) {
-      downloadFile(props.name + ".mp3", props.lowSource);
-    } else {
-      downloadFile(props.name + ".wav", props.highSource);
-    }
+    getAudio().control(PlayerAction.download);
   }
   function playIconToolTip() {
     let s = getAudio().state;

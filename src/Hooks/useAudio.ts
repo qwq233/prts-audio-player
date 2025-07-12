@@ -1,6 +1,7 @@
 import { Howl } from "howler";
 import { useEffect, useRef, useState } from "react";
 import { useInterval } from "./useInterval";
+import { combineAndDownload } from "../Utils/dl";
 export enum PlayState {
   Idle,
   Loading,
@@ -18,6 +19,7 @@ export enum PlayerAction {
   changeMute,
   changeLoop,
   process,
+  download,
 }
 export interface Audio {
   control: AudioControl;
@@ -171,6 +173,20 @@ export function useAudio(src: string, p?: number): Audio {
           } else {
             refIntro.current?.seek(value);
           }
+        }
+        break;
+      case PlayerAction.download:
+        if (isCombined) {
+          const introSrc = src.replace("_combine", "_intro");
+          const loopSrc = src.replace("_combine", "_loop");
+
+          combineAndDownload(introSrc, loopSrc);
+        } else {
+          const link = document.createElement("a");
+          link.href = src;
+          link.download = src.split("/").pop() || "audio.mp3";
+          document.body.appendChild(link);
+          link.click();
         }
         break;
       default:
